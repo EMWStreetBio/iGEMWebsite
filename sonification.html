@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<!--
+	Telephasic by HTML5 UP     and    Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Biota Beats - by EMW Streetbio</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--[if lte IE 8]>
+    <script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css"/>
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="assets/css/ie9.css"/><![endif]-->
+</head>
+<body class="no-sidebar">
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <div id="header-wrapper">
+        <div id="header" class="container">
+
+            <!-- Logo -->
+            <h1 id="logo"><a href="index.html"></a></h1>
+
+            <!-- Nav -->
+            <nav id="nav" class="row">
+                <ul class="5u 6u(narrow)" style="position:absolute; left: 0;">
+                    <li><a href="concept.html">Concept</a></li>
+                    <li>
+                        <a href="hardware.html">Hardware</a>
+                        <ul>
+                            <li><a href="incubator.html">Incubator</a></li>
+                            <li><a href="records.html">Microbiome Records</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="culturing.html">Culturing</a></li>
+                    <li class="active"><a href="sonification.html">Sonification</a></li>
+                </ul>
+                <ul class="5u 6u(narrow)" style="position:absolute; right: 0;">
+                    <!--<li class="break">-->
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="engagement.html">Engagement</a></li>
+                    <li><a href="attributions.html">Attributions</a></li>
+                    <li><a href="safety.html">Safety</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Features 2 -->
+    <div class="wrapper">
+        <header class="major special">
+            <h2>Sonification</h2>
+        </header>
+        <section class="container">
+            <article class="row">
+                <p>How can microbes be sonified? Once inoculated, our microbiome records were imaged utilizing an
+                    open-source camera to generate 2D images. We developed several approaches to generate sound and
+                    music from these images, with a principal question in mind: how is the sound meaningful from a
+                    biological perspective?</p>
+
+                <p>Ultimately, we focused on three forms of data that could be extracted from the images of our
+                    records: microbe location, density, and cluster size. Given the design of our records, we could add
+                    an additional layer of information by having different segments of each record correspond to
+                    organisms swabbed from different parts of the body. With our incubator and camera, we could also
+                    take time-lapse images, adding a time parameter. Based on these inputs, we developed several
+                    algorithms to convert these data streams to sound and music. </p>
+            </article>
+            <article class="row">
+                <header class="special">
+                    <h4>Background</h4>
+                </header>
+
+                <p><u>Sonification:</u> the use of non-speech audio to convey information or perceptualize data.</p>
+
+                <p>Auditory perception has advantages in temporal, spatial, amplitude, and frequency resolution that
+                    open
+                    possibilities as an alternative complement to visualisation techniques.</p>
+
+                <p>There is prior work sonifying algae data, star data, and microbial data into music by various
+                    methods.
+                    For example, scientists looked for patterns in readings from blue-green algae samples collected in
+                    the
+                    western English Channel then transformed the data into musical notes:
+                    <a href="http://www.livescience.com/23626-microbe-music-algae-songs.html">
+                        http://www.livescience.com/23626-microbe-music-algae-songs.html</a>.
+                    The tune "Bloom" illustrates how some
+                    algae species bloom occasionally and become more abundant for short periods of time. They had lower
+                    abundance of microbe correspond to lower notes, and chord progression was related to day length,
+                    chlorophyll concentration in the water, and other physical parameters.</p>
+
+                <p>Here astronomers converted star data from NASA's Kepler telescope into reggae songs:
+                    <a href="http://www.space.com/16119-stars-reggae-music-kepler-telescope.html?_ga=1.215947806.863416596.1474217560.">link</a>.
+                </p>
+
+
+                <p>Then a team converted RNA sequences and protein 3D structure into sound:
+                    <a href="http://victoriashennan.com/Anthropocene-Microbial-Music">link</a>.</p>
+
+            </article>
+        </section>
+        <section class="container">
+            <header class="special">
+                <h3>Making</h3>
+            </header>
+            <article class="row">
+                <p>Based on inspiration from the previous sonification projects, the sonification software was designed
+                    using prior image processing techniques. First, a Gaussian filter reduces the image noise, and the
+                    image
+                    is converted to a black-and-white binary image. The location of the center of each cluster and the
+                    size
+                    of each cluster are stored. Based on this information, the density of each area on the plate is
+                    computed.</p>
+
+                <p>Each image is mapped to a coordinate system, and the colony location correlates to musical notes, or
+                    pitches. Then density of the colonies corresponds to background music. Granular Synthesis is a
+                    method by
+                    which sounds are broken into tiny grains that are redistributed and reorganized to form other
+                    sounds.
+                    Here the concept of granular synthesis is used with the density data.</p>
+
+                <p>In the first attempt, shape and size of the colonies was to correlate to different scale types:
+                    major,
+                    natural minor, melodic minor, pentatonic,and chromatic. However, a classifier with only five groups
+                    brings more ambiguities. Thus, it was switched to FM synthesis. FM synthesis stands for frequency
+                    modulation synthesis; the timbre (tone quality) of a waveform is changed by adjustingits frequency
+                    with
+                    a modulator frequency that is also in the audio range, resulting in a more complex waveform. This
+                    new
+                    tone can be described as "gritty" if it is a thick and dark timbre. For synthesizing harmonic
+                    sounds,
+                    the modulating signal must have a harmonic relationship to the original carrier signal.</p>
+
+                <p>With two types of culture plates, the program can be used to compare the sonification results from
+                    each.
+                    With a timelapse video for 2-3 days of the culture plates, it is also possible to listen to the
+                    sound
+                    change as the microorganisms grow.</p>
+
+                <p>Setup for camera module:</p>
+
+                <span class="image 8u -2u 12u(mobile)"><img
+                        src="http://2016.igem.org/wiki/images/b/b7/T--EMW_Street_Bio--images_yixiao1.jpg"
+                        alt=""/></span>
+
+                <span class="image 8u -2u 12u(mobile)"><img
+                        src="http://2016.igem.org/wiki/images/0/08/T--EMW_Street_Bio--images_yixiao2.jpg"
+                        alt=""/></span>
+
+                <span class="image 6u"><img
+                        src="http://2016.igem.org/wiki/images/0/00/T--EMW_Street_Bio--images_yixiao3.jpg"
+                        alt=""/></span>
+                <span class="image 6u"><img
+                        src="http://2016.igem.org/wiki/images/c/c6/T--EMW_Street_Bio--images_yixiao31.jpg"
+                        alt=""/></span>
+
+                <span class="image 6u"><img
+                        src="http://2016.igem.org/wiki/images/1/13/T--EMW_Street_Bio--images_yixiao4.png"
+                        alt=""/></span>
+
+                <span class="image 6u"><img
+                        src="http://2016.igem.org/wiki/images/1/18/T--EMW_Street_Bio--images_yixiao5.png"
+                        alt=""/></span>
+
+                <span class="image 6u"><img
+                        src="http://2016.igem.org/wiki/images/d/d4/T--EMW_Street_Bio--images_yixiao6.png"
+                        alt=""/></span>
+
+                <span class="image 6u"><img
+                        src="http://2016.igem.org/wiki/images/4/4b/T--EMW_Street_Bio--images_yixiao7.png"
+                        alt=""/></span>
+                <span class="image 6u"><img
+                        src="http://2016.igem.org/wiki/images/2/20/T--EMW_Street_Bio--images_yixiao8.png"
+                        alt=""/></span>
+                <span class="image 6u"><img
+                        src="http://2016.igem.org/wiki/images/f/f8/T--EMW_Street_Bio--images_yixiao9.png"
+                        alt=""/></span>
+
+            </article>
+        </section>
+        <section class="container">
+            <header class="special">
+                <h3>Creating Audio files from the Microbiome.</h3>
+            </header>
+            <article>
+                <span class="image 8u -2u 12u(mobile)"><img
+                                        src="http://2016.igem.org/wiki/images/a/a5/T--EMW_Street_Bio--images_yixiao_ex1.jpg"
+                                        alt=""/>Mapping Method from Microbiome to Music. 5 discrete areas are shown and sonified.</span>
+
+                <span class="image 8u -2u 12u(mobile)"><img
+                        src="http://2016.igem.org/wiki/images/8/8e/T--EMW_Street_Bio--images_yixiao_ex2.png"
+                        alt=""/>Squares of Distances from Colony Clusters to the Center in each area. Each cluster is assigned with a rhythmic sound by a different musical instrument.</span>
+
+                <p>Each numbered audio file corresponds to the sonification of the 4 out of 5 discrete areas shown above.</p>
+                <audio controls>
+                    <source src="http://2016.igem.org/wiki/images/9/9a/T--EMW_Street_Bio--images_sound1.mp3"
+                            type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+                <audio controls>
+                    <source src="http://2016.igem.org/wiki/images/e/e5/T--EMW_Street_Bio--images_sound2.mp3"
+                            type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+                <audio controls>
+                    <source src="http://2016.igem.org/wiki/images/7/74/T--EMW_Street_Bio--images_sound3.mp3"
+                            type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+                <audio controls>
+                <source src="http://2016.igem.org/wiki/images/3/38/T--EMW_Street_Bio--images_sound4.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+                </audio>
+                <audio controls>
+                <!--<source src="http://2016.igem.org/wiki/images/9/9a/T&#45;&#45;EMW_Street_Bio&#45;&#45;images_sound1.mp3" type="audio/mp3">-->
+                <!--Your browser does not support the audio element.-->
+                <!--</audio>-->
+            </article>
+        </section>
+
+
+    </div>
+
+    <!-- Footer -->
+    <div id="copyright" class="container">
+        <ul class="menu">
+            <li>&copy; EMW Streetbio and iGEM 2016</li>
+            <li>Design: Thras Karydis &amp; <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<!--[if lte IE 8]>
+<script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
